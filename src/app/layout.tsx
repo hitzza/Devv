@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import React from "react";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import DarkMode from "./components/DarkMode";
+import { hasCookie } from "cookies-next";
 
 export const metadata: Metadata = {
   title: "Devv",
@@ -14,13 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  let darkMode = hasCookie("DarkMode");
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={darkMode ? "dark-mode" : ""}>
         <nav>
           <ul>
-            <li>1</li>
-            <li>2</li>
+            <li className={darkMode ? "dark-mode" : ""}>1</li>
+            <li>
+              <DarkMode />
+            </li>
           </ul>
         </nav>
         {children}
