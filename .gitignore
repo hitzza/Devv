@@ -87,3 +87,4 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,nextjs,react
 node_modules
+.env
