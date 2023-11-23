@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
 
@@ -15,13 +16,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let darkMode = hasCookie("DarkMode");
+  // let darkMode = hasCookie("darkMode");
+  let test = cookies().get("darkMode");
+  console.log("test: " + test);
   return (
     <html lang="en">
-      <body className={darkMode ? "dark-mode" : ""}>
+      <body className={test ? "dark-mode" : ""}>
         <nav>
           <ul>
-            <li className={darkMode ? "dark-mode" : ""}>1</li>
+            <li className={test ? "dark-mode" : ""}>1</li>
             <li>
               <DarkMode />
             </li>
