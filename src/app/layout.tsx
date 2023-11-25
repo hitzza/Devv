@@ -16,9 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // let darkMode = hasCookie("darkMode");
   let test = cookies().get("darkMode");
-  console.log("test: " + test);
   return (
     <html lang="en">
       <body className={test ? "dark-mode" : ""}>

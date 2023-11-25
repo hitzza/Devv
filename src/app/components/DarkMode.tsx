@@ -1,27 +1,26 @@
 "use client";
-import { hasCookie, deleteCookie, setCookie } from "cookies-next";
-// import { cookies } from "next/headers";
-import React, { useEffect } from "react";
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const DarkMode = () => {
-  useEffect(() => {
-    document.cookie = "darkMode=true; max-age=" + 3600 * 24 * 400;
-  }, []);
+  let router = useRouter();
+  //TODO: refresh 없이 상태 바뀌게 변경
   return (
     <button
       onClick={(e) => {
         e.preventDefault();
-        // const darkMode = hasCookie("darkMode");
 
-        // darkMode ? deleteCookie("darkMode") : setCookie("darkMode", "true");
-        let cookies = ("; " + document.cookie)
+        const cookies = ("; " + document.cookie)
           .split(`; darkMode=`)
           .pop()
           ?.split(";")[0];
+        console.log(cookies + "cookie");
+        cookies
+          ? deleteCookie("darkMode")
+          : (document.cookie = "darkMode=true; max-age=" + 3600 * 24 * 400);
 
-        if (cookies == "") {
-          document.cookie = "mode=light; max-age=" + 3600 * 24 * 400;
-        }
+        router.refresh();
       }}
     >
       DarkMode!
