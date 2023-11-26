@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={test ? "dark-mode" : ""}>
         <nav>
           <ul>
-            <li className={test ? "dark-mode" : ""}>1</li>
+            <li>1</li>
             <li>
               <DarkMode />
             </li>
