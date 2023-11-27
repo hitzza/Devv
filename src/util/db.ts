@@ -1,12 +1,16 @@
 import { MongoClient } from "mongodb";
+
 let connectDB;
-console.log("Connect", process.env.NODE_ENV);
+
+const dbUrl = process.env.NEXT_PUBLIC_DB_URL
+  ? process.env.NEXT_PUBLIC_DB_URL
+  : "";
 if (process.env.NODE_ENV === "development") {
   if (!global._mongo) {
-    global._mongo = new MongoClient(process.env.NODE_ENV).connect();
+    global._mongo = new MongoClient(dbUrl).connect();
   }
   connectDB = global._mongo;
 } else {
-  connectDB = new MongoClient(process.env.NODE_ENV).connect();
+  connectDB = new MongoClient(dbUrl).connect();
 }
 export { connectDB };

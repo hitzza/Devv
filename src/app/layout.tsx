@@ -4,7 +4,6 @@ import React from "react";
 import "./globals.css";
 
 import DarkMode from "./components/DarkMode";
-import { hasCookie } from "cookies-next";
 
 export const metadata: Metadata = {
   title: "Devv",
